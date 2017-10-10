@@ -1,3 +1,11 @@
+<!-- Project 4
+   - Part II: Semantics of Selected Languages
+   - JavaScript
+   -
+   - Task1
+   - Tracy Quan
+ -->
+
 <html style="font-family:Calibri;">
   <head>
     <title>Project4 -- JavaScript</title>
@@ -8,10 +16,36 @@
       Write a program that uses all these control flow statements. </p>
     <p>For each of the statements, compare it with C if C also has it.
        Briefly describe the differences if there are any.</p>
-  </head>
-  <body>
     <h4></h4>
     <h4>Output: </h4>
-    <script src="Task1.js"></script>
-  </body>
+
+    <!-- Here is my JavaScript Code -->
+    <script>
+      <!-- Conditional Statement -->
+      document.write("--- Conditional Statement --<br>");
+      function condi(score) {
+        if (score>90){
+          document.write("Your score is " + score + ". Good Job!<br>");
+        }
+        else{
+          document.write("Your score is " + score + ". Try agian!<br>");
+        }
+      }
+      var midterm1 = 98;
+      condi(midterm1);
+
+      <!-- Switch -->
+      document.write("<br>--- Switch Statement --<br>");
+      var team = "Clippers";
+      switch(team){
+        case "Lakers":
+          document.write("Let's go watch game! :D<br>");
+        case "Clippers":
+          document.write("Let's go study! :c<br>");
+      }
+
+
+
+    </script>
+  </head>
 </html>
