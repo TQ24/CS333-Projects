@@ -1,0 +1,7 @@
+This is an input file for Project 2, CS333.
+I want to finish this Project before Sunday night.
+I wanna eat Peking Roast Duck.
+I wanna eat Dim Sum.
+I wanna eat hotpot.
+I wanna eat green tea ice cream.
+I need to stop writing this file because it makes me hungry.

@@ -1,0 +1,218 @@
+
+
+  
+Project 2 | CS 333
+
+
+
+
+
+
+
+
+  
+  
+  
+
+    
+      
+
+  
+    
+    
+    
+  
+  CS 333
+
+        
+          
+            Topics
+Notes
+
+Homework
+
+Homework 1
+Homework 2
+Homework 3
+Homework 4
+Homework 5
+Homework 6
+Homework 7
+Homework 8
+Homework 9
+  
+
+
+Projects
+
+Project 1
+Project 2
+Project 3
+Project 4
+Project 5
+Project 6
+Project 7
+Project 8
+Project 9
+  
+
+Reference Materials
+          
+        
+      
+    
+
+ 
+
+
+CS 333 Programming Languages
+Project 2
+
+
+
+$(function(){$("#index").addClass("active")})
+
+    Lexical Analysis
+
+    The first thing we have to do with any programming language is build a lexical analyzer 
+that converts a text string into a series of tokens. There are lots of tools for handling 
+this. For this assignment, you'll make use of the Flex lexical analysis tool and 
+build a few different parsers.
+
+    Tasks
+Flex is an open source lexical analysis tool. The way it works is you first create an input 
+file that defines symbols and production rules that describe how to parse a text file. Then 
+you run Flex and it produces a C file. You can then compile the C file and run it on some input.
+
+    As an example, consider the following Hello World program for Flex. The line 
+beginning with blah defines a rule that says to replace instances of blah 
+with hello world.
+
+    
+/**
+ * Hello World: replace "blah" with "hello world"
+ */
+ 
+ %%
+ 
+ blah    printf("hello world");
+ 
+ %%
+ 
+ int main ( int argc, char *argv[] ) {
+ 
+ yylex();
+ 
+ }
+    
+
+    If you type the above into a file called replace.yy and then execute the following 
+commands, you get the resulting behavior. 
+
+     $ flex replace.yy  
+     $ gcc -o repl lex.yy.c -lfl 
+ $ echo "blah and another blah" | ./repl 
+ hello world and another hello world 
+
+The documentation for flex provides many 
+more examples and a description of the syntax.
+
+Note that flex is based on regular expressions, which are similar to the extended BNF notation 
+we've gone over in class. There are lots of 
+documentation for regular expressions, and they can be very useful in many situations.
+
+
+ Using flex, make a program called encode.yy that takes any character in a-z or A-Z 
+and shifts it 13 spaces forward in the alphabet, with wraparound from z back to a. Run it on a 
+text file of your choice. You can test that it is working correctly by running the output of 
+encode.yy through encode again. The result should be the original document.
+
+
+Using Flex, make a program that reads in a text file and tells you not only the number 
+of rows and characters, but also how many of each vowel [a, e, i, o, u] are in 
+the file.
+
+
+Make a program that strips an html file of all tags and comments. It should also strip 
+the file of all whitespace except for a blank line wherever there used to be a 
+<p> tag. Test it on this web page. Here is a 
+downloadable version.
+
+Note that this is challenging to do in a way that make the output reasonably formatted. 
+As an extension, you can make your program do more sophisticated things like replace 
+&amp;gt; with >.
+
+
+Implement a parser for Clite. For now, the output of your program should just be a 
+sequence of strings, one per line. Please use the following strings.
+
+
+
+
+Integer-<value>
+A sequence of one or more digits.
+
+
+Float-<value>
+An integer, a dot, and another integer.
+
+
+Keyword-<word>
+if | else | while | for | int | float
+
+
+Identifier-<name>
+Legal names/identifiers.
+
+
+Assignment
+ = 
+
+
+Comparison-<symbol>
+== | < | > | <= | >=
+
+
+Operator-<symbol>
++ | - | * | / 
+
+
+Open-bracket
+ { 
+
+
+Close-bracket
+ } 
+
+
+Open-paren
+ ( 
+
+
+Close-paren
+ ) 
+
+
+
+
+Ideally, your program should also ignore comments. You can test your program on this 
+example. You should get something 
+like this result.
+
+
+Extensions
+
+ Get comments working properly. Be sure to try out a variety of examples.
+ Make the encoder more complex.
+ Make the program for analyzing a document to some more interesting things. 
+
+
+
+&copy; 2016 Ying Li. Page last modified:
+document.write(Date(document.lastModified));
+.
+
+ 
+
+    
+  
