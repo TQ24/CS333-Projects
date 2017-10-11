@@ -1,0 +1,38 @@
+<!-- Project 4
+   - Part II: Semantics of Selected Languages
+   - JavaScript
+   -
+   - Extension 2: polymorphism
+   - Tracy Quan
+ -->
+
+<html>
+  <head>
+    <title>Project4 -- JavaScript</title>
+    <img src="images/javascript.png" alt="javascript" style="width:240px;height:120px">
+    <h1>Project4 -- JavaScript</h1>
+    <h3>Extension 2: polymorphism</h3>
+    <h4>Output: </h4>
+
+    <!-- Here is my JavaScript Code -->
+    <script>
+      var Person = function (firstName, lastName, age){
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.age = age;
+      }
+
+      Person.prototype.getFullNmae = function(){
+        return this.firstName + " " + this.lastName;
+      }
+
+      var person1 = new Person("Tracy", "Quan", 19);
+      for (var pro in person1){
+        if (typeof person1[pro] != "function"){
+          document.write(pro+ " : " + person1[pro] + "<br>");
+        }
+      }
+
+    </script>
+  </head>
+</html>
