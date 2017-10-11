@@ -1,0 +1,74 @@
+<!-- Project 4
+   - Part II: Semantics of Selected Languages
+   - JavaScript
+   -
+   - Task2
+   - Tracy Quan
+ -->
+
+<html>
+  <head>
+    <title>Project4 -- JavaScript</title>
+    <img src="images/javascript.png" alt="javascript" style="width:240px;height:120px">
+    <h1>Project4 -- JavaScript</h1>
+    <h3>Task 3: </h3>
+    <p>Implement a general sort algorithm (e.g., quick sort, merge sort) that can be used <br>
+       for any type and can be used to obtain any desired order. <br>
+       Write a test program for your implementation, and demonstrate your algorithm works. </p>
+    <h4></h4>
+    <h4>Output: </h4>
+
+    <!-- Here is my JavaScript Code -->
+    <script>
+      function mergesort(arr){
+        var length = arr.length;
+        // if there is zero or one element in the array, just return the array
+        if (length < 2){
+          return arr;
+        }
+        // split the array into two arrays
+        var midpoint = Math.floor(length/2);
+        var leftarr = arr.slice(0, midpoint);
+        var rightarr = arr.slice(midpoint);
+        // recursion
+        return merge(mergesort(leftarr), mergesort(rightarr));
+      }
+
+      function merge(left, right){
+        var sortedarr = [];
+        var leftlen = left.length;
+        var rightlen = right.length;
+        var l = 0;
+        var r = 0;
+
+        while (l<leftlen && r<rightlen){
+          // compare the terms of left and right arrays
+          if (left[l] < right[r]){
+            sortedarr.push(left[l]);
+            l++;
+          }
+          else{
+            sortedarr.push(right[r]);
+            r++;
+          }
+        }
+        // concatanate the sorted array with the remaining left and right arrays.
+        return sortedarr.concat(left.slice(l)).concat(right.slice(r));
+      }
+
+      var array = [1, 5, 4, 7, 64, 57, 45, 24];
+      document.write("The original array: " + array + "<br>");
+      document.write("The sorted array: " + mergesort(array)+ "<br>");
+
+      var array2 = ["a","d","b",3,1];
+      document.write("<br>");
+      document.write("The original array: " + array2 + "<br>");
+      document.write("The sorted array: " + mergesort(array2)+ "<br>");
+
+      var array3 = ["This","is","the","part", 2, "of", "Project", 4];
+      document.write("<br>");
+      document.write("The original array: " + array3 + "<br>");
+      document.write("The sorted array: " + mergesort(array3)+ "<br>");
+    </script>
+  </head>
+</html>

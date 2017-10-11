@@ -1,0 +1,58 @@
+<!-- Project 4
+   - Part II: Semantics of Selected Languages
+   - JavaScript
+   -
+   - Task2
+   - Tracy Quan
+ -->
+
+<html>
+  <head>
+    <title>Project4 -- JavaScript</title>
+    <img src="images/javascript.png" alt="javascript" style="width:240px;height:120px">
+    <h1>Project4 -- JavaScript</h1>
+    <h3>Task 2: </h3>
+    <p>Function Type: write a program to shows how are functions treated in the language as a data type? <br>
+       Can you assign a function to a variable? Can you pass a function to another function? <br>
+       If so, how do you then execute the function using the reference? </p>
+    <h4></h4>
+    <h4>Output: </h4>
+
+    <!-- Here is my JavaScript Code -->
+    <script>
+    function regular(){
+      document.write("This is a regular way of defining a function.<br>");
+    }
+
+    regular();
+
+
+    // Assign a function to a function variable
+    var variable = function assign_var(){
+      document.write("<br>We can assign a function to a variable (function variable)<br>");
+    }
+
+    variable();
+
+    // Assign the return value of a function to a variable
+    function power(base, exponent){
+      var result = 1;
+      for (var i = 0; i < exponent; i++){
+        result = result* base;
+      }
+      return result;
+    }
+
+    var power_result = power(2,10);
+    document.write("<br>The 10th power of two is " + power_result + "<br>");
+
+    // Pass a function to another function as parameters
+    function plus(number1, number2){
+      var result = number1 + number2;
+      return result;
+    }
+    document.write("<br>The 10th power of two plus the 10th power of three is " + plus(power(2,10),power(3,10)));
+
+    </script>
+  </head>
+</html>
