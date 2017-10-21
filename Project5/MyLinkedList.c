@@ -21,9 +21,8 @@ typedef struct {
 
 // Creates a new LinkedList struct, initializes it, and returns it.
 LinkedList *ll_create(){
-  LinkedList *llptr;                // create a pointer to the linked LinkedList
-  LinkedList ll = {NULL};           // initialize a linked list
-  llptr = &ll;                 // connect the pointer with the linked list
+  LinkedList *llptr = malloc(sizeof(LinkedList));   // create a pointer to the linked LinkedList
+  llptr->head = NULL;
   return llptr;
 }
 
@@ -31,7 +30,24 @@ LinkedList *ll_create(){
 void ll_push(LinkedList *l, void *data){
   // if the linkedlist is empty, create a new head.
   if (l->head == NULL){
-    Node newhead = {NULL,NULL};
-    l->head = &newhead;
+    Node *newhead;
+    newhead = (Node *)malloc(sizeof(Node));
+    newhead->data = data;
+    newhead->next = NULL;
   }
+  Node *prevhead;       //store the old head Node
+  prevhead = l->head;
+  Node *newhead;
+  newhead = (Node *)malloc(sizeof(Node));
+  newhead->data = data;
+  l->head = newhead;    //head point to the new head
+  newhead->next = prevhead;
+}
+
+// removes the node at the front of the list and returns the associate data.
+void *ll_pop(LinkedList *l){
+  Node *pop;
+  pop = l->head;
+  l->head = pop->next;
+  return pop->data;
 }
