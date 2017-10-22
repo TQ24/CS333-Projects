@@ -35,3 +35,5 @@ int ll_size(LinkedList *l);
 void ll_clear(LinkedList *l, void (*freefunc)(void *));
 
 void ll_map(LinkedList *l, void (*mapfunc)(void *));
+
+void ll_delete(LinkedList *l, int index);

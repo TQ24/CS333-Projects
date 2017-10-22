@@ -1,10 +1,8 @@
 /* Project 5
  * Part I: Polymorphism
- * Task1
+ * Extension
  *
- * Create a generic linked list class in C. First, create a LinkedList struct that
- * has a head pointer and a Node struct that can hold an arbitrary pointer and
- * a next pointer.
+ * The delete function for LinkedList
  */
 
 #include <stdio.h>
@@ -151,28 +149,33 @@ void ll_map(LinkedList *l, void (*mapfunc)(void *)){
   }
 }
 
-/*
-// test code
-int main(){
-  LinkedList *ll = ll_create();
-  printf("Current size: %d\n", ll_size(ll));
-  ll_push(ll, 10);
-  printf("Current size: %d\n", ll_size(ll));
-  ll_push(ll, 20);
-  printf("Current size: %d\n", ll_size(ll));
-  ll_push(ll, 30);
-  printf("%d\n", ll->head->data);
-  printf("%d\n", ll->head->next->data);
-  printf("%d\n", ll->head->next->next->data);
-  printf("Current size: %d\n", ll_size(ll));
-  ll_pop(ll);
-  printf("Current size: %d\n", ll_size(ll));
-  ll_pop(ll);
-  printf("Current size: %d\n", ll_size(ll));
-  ll_pop(ll);
-  printf("Current size: %d\n", ll_size(ll));
-  //printf("%d\n", ll->head);
-  ll_append(ll,0);
-
+// removes the node at any position in the list
+void ll_delete(LinkedList *l, int index){
+  if (l->head == NULL){
+    return;
+  }
+  if (index >= l->size || index < 0 ){
+    return;
+  }
+  else {
+    if (l->size == 1){
+      l->head = NULL;
+      l->size--;
+    }
+    else {
+      Node *c = l->head;
+      if (index == 0){
+        l->head = c->next;
+      }
+      else{
+        Node *last = c;
+        c = c->next;
+        for (int i = 1; i < index ; i++){
+          c = c->next;
+          last = last->next;
+        }
+        last->next = c->next;
+      }
+    }
+  }
 }
-*/

@@ -114,5 +114,20 @@ int main(int argc, char *argv[]) {
 
 	printf("\nList size: %d\n", ll_size(l) );
 
+	ll_delete(l, 1);
+
+	printf("\nAfter deleting the second node\n");
+	ll_map(l, printInt);
+
+	ll_delete(l, 0);
+
+	printf("\nAfter deleting the fist node\n");
+	ll_map(l, printInt);
+
+	ll_delete(l, 0);
+
+	printf("\nAfter deleting the fist node\n");
+	ll_map(l, printInt);
+
 	return(0);
 }
