@@ -137,7 +137,7 @@ void ll_map(LinkedList *l, void (*mapfunc)(void *)){
   }
   else{
     while (current != NULL){
-      current->data = &mapfunc(current->data);
+      current->data = mapfunc(current->data);
       current = current->next;
     }
   }
