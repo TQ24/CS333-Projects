@@ -75,7 +75,7 @@ int main(int argc, char *argv[]) {
 		printf("\nremoved: %d\n", *a);
 	else
 		printf("\nNo instance of %d\n", *target);
-
+/*
 	printf("\nAfter removals\n");
 	ll_map(l, printInt);
 
@@ -113,6 +113,6 @@ int main(int argc, char *argv[]) {
 	ll_map(l, printInt);
 
 	printf("\nList size: %d\n", ll_size(l) );
-
+*/
 	return(0);
 }

@@ -8,6 +8,7 @@
  */
 
 #include <stdio.h>
+#include <stdlib.h>
 #include "linkedlist.h"
 
 // Creates a new LinkedList struct, initializes it, and returns it.
@@ -143,7 +144,7 @@ void ll_map(LinkedList *l, void (*mapfunc)(void *)){
   }
 }
 
-
+/*
 // test code
 int main(){
   LinkedList *ll = ll_create();
@@ -167,3 +168,4 @@ int main(){
   ll_append(ll,0);
 
 }
+*/
