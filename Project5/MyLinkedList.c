@@ -131,6 +131,7 @@ void ll_clear(LinkedList *l, void (*freefunc)(void *)){
   while (cur != NULL ){
     Node *clear = cur;
     cur = cur->next;
+    free(clear->data);
     free(clear);
   }
   l->head = NULL;
