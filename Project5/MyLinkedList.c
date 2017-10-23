@@ -150,29 +150,3 @@ void ll_map(LinkedList *l, void (*mapfunc)(void *)){
     }
   }
 }
-
-/*
-// test code
-int main(){
-  LinkedList *ll = ll_create();
-  printf("Current size: %d\n", ll_size(ll));
-  ll_push(ll, 10);
-  printf("Current size: %d\n", ll_size(ll));
-  ll_push(ll, 20);
-  printf("Current size: %d\n", ll_size(ll));
-  ll_push(ll, 30);
-  printf("%d\n", ll->head->data);
-  printf("%d\n", ll->head->next->data);
-  printf("%d\n", ll->head->next->next->data);
-  printf("Current size: %d\n", ll_size(ll));
-  ll_pop(ll);
-  printf("Current size: %d\n", ll_size(ll));
-  ll_pop(ll);
-  printf("Current size: %d\n", ll_size(ll));
-  ll_pop(ll);
-  printf("Current size: %d\n", ll_size(ll));
-  //printf("%d\n", ll->head);
-  ll_append(ll,0);
-
-}
-*/
