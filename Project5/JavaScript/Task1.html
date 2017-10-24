@@ -181,28 +181,44 @@
 
       // test function
       function test(){
+        document.write("--- Integer Linked List ---<br>");
         var ll = new LinkedList();
         ll.push(2);
         ll.push(4);
         ll.push(8);
         ll.push(16);
-        document.write("After pushing: <br>")
+        document.write("After pushing: <br>");
         ll.display();
         ll.pop();
-        document.write("After popping: <br>")
+        document.write("After popping: <br>");
         ll.display();
         ll.append(24);
         ll.append(0);
-        document.write("After appending: <br>")
+        document.write("After appending: <br>");
         ll.display();
         ll.remove(24);
-        document.write("After removing: <br>")
+        document.write("After removing: <br>");
         ll.display();
         ll.ll_map(square);
-        document.write("After squaring: <br>")
+        document.write("After squaring: <br>");
         ll.display();
         ll.clear();
-        document.write("After clearing: <br>")
+        document.write("After clearing: <br>");
+        ll.display();
+
+        document.write("<br>--- String Linked List ---<br>");
+        ll.push("cs");
+        ll.push("project");
+        ll.push("econ");
+        ll.push("problem set");
+        document.write("After pushing:<br>");
+        ll.display();
+        ll.pop();
+        ll.pop();
+        document.write("After popping:<br>");
+        ll.display();
+        ll.append("finished");
+        document.write("After appending:<br>");
         ll.display();
       }
 

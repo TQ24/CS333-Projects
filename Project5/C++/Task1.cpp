@@ -9,12 +9,15 @@
  */
 
 #include <iostream>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 using namespace std;
 
 struct node
 {
   node *next;
-  float data;
+  void *data;
 };
 
 class LinkedList
@@ -37,7 +40,7 @@ public:
   }
 
   // adds a node to the front of the list, storing the given data in the node.
-  void ll_push( float data ){
+  void ll_push( void *data ){
     node *newnode = new node;
     newnode->data = data;
     if ( size == 0 ){
@@ -72,7 +75,7 @@ public:
   }
 
   // adds a node to the end of the list, storing the given data in the node
-  void ll_append( float data ){
+  void ll_append( void *data ){
     node *newnode = new node;
     newnode->data = data;
     if (size==0){
@@ -92,7 +95,7 @@ public:
   }
 
   // removes the first node in the list whos data matches target, freeing the associated data.
-  void ll_remove(float target){
+  void ll_remove(void *target){
     if (size == 0){
 
     }
@@ -157,14 +160,14 @@ public:
   }
 
   // traverses the list and applies the give function to the data at each node.
-  void ll_map(void (*mapfunc)(float *)){
+  void ll_map(void (*mapfunc)(void *)){
     node *cur = head;
     if (cur==NULL){
 
     }
     else{
       while (cur!=NULL){
-        float *a = &cur->data;
+        void *a = cur->data;
         mapfunc(a);
         cur = cur->next;
       }
@@ -212,38 +215,74 @@ public:
     else {
       std::cout<< "Linked List: ";
       while (cur!=NULL){
-        std::cout<< cur->data << " ";
+        int a = *((int *)cur->data);
+        std::cout<< a << " ";
         cur = cur->next;
       }
     }
     std::cout<< "\n";
   }
+
+  void ll_displayf(){
+    node *cur = head;
+    if (cur == NULL){
+      std::cout<< "This list is empty!\n";
+    }
+    else {
+      std::cout<< "Linked List: ";
+      while (cur!=NULL){
+        float a = *((float *)cur->data);
+        std::cout<< a << " ";
+        cur = cur->next;
+      }
+    }
+    std::cout<< "\n";
+  }
+
 };
 
-void square(float *i){
-  *i = *i * *i;
+// square int
+void squareint(void *i){
+  int *a = (int *)i;
+  *a = *a * *a;
+}
+
+// square float
+void squaref(void *i){
+  float *a = (float *)i;
+  *a = *a * *a;
 }
 
 int main(){
   LinkedList *ll = new LinkedList;
   std::cout<<"---Integer Linked List---\n";
-  int a = 24;
+  int *a;
+  a = (int *)malloc(sizeof(int));
+  *a = 24;
   ll->ll_push(a);
-  a = 32;
+  a = (int *)malloc(sizeof(int));
+  *a = 32;
   ll->ll_push(a);
-  a = 99;
+  a = (int *)malloc(sizeof(int));
+  *a = 99;
   ll->ll_push(a);
   std::cout<<"After pushing:\n";
   ll->ll_display();
-  a = 8;
+  a = (int *)malloc(sizeof(int));
+  *a = 8;
   ll->ll_append(a);
   std::cout<<"After appending:\n";
   ll->ll_display();
-  ll->ll_remove(99);
-  ll->ll_remove(88);
+  a = (int *)malloc(sizeof(int));
+  *a = 99;
+  ll->ll_remove(a);
+  a = (int *)malloc(sizeof(int));
+  *a = 88;
+  ll->ll_remove(a);
+  free(a);
   std::cout<<"After removing:\n";
   ll->ll_display();
-  ll->ll_map(square);
+  ll->ll_map(squareint);
   std::cout<<"After squaring:\n";
   ll->ll_display();
   ll->ll_clear();
@@ -252,31 +291,42 @@ int main(){
 
   LinkedList *ll2 = new LinkedList;
   std::cout<<"\n---Float Linked List---\n";
-  float b = 24.4;
+  float *b;
+  b = (float *)malloc(sizeof(float));
+  *b = 24.4;
   ll2->ll_push(b);
-  b = 32.2;
+  b = (float *)malloc(sizeof(float));
+  *b = 32.2;
   ll2->ll_push(b);
-  b = 99.9;
+  b = (float *)malloc(sizeof(float));
+  *b = 99.9;
   ll2->ll_push(b);
   std::cout<<"After pushing:\n";
-  ll2->ll_display();
-  b = 8.8;
+  ll2->ll_displayf();
+  b = (float *)malloc(sizeof(float));
+  *b = 8.8;
   ll2->ll_append(b);
   std::cout<<"After appending:\n";
-  ll2->ll_display();
-  ll2->ll_remove(99.9);
-  ll2->ll_remove(88.8);
+  ll2->ll_displayf();
+  b = (float *)malloc(sizeof(float));
+  *b = 99.9;
+  ll2->ll_remove(b);
+  free(b);
+  b = (float *)malloc(sizeof(float));
+  *b = 88.8;
+  ll2->ll_remove(b);
+  free(b);
   std::cout<<"After removing:\n";
-  ll2->ll_display();
-  ll2->ll_map(square);
+  ll2->ll_displayf();
+  ll2->ll_map(squaref);
   std::cout<<"After squaring:\n";
-  ll2->ll_display();
+  ll2->ll_displayf();
   ll2->ll_delete(2);
   std::cout<<"After deleting:\n";
-  ll2->ll_display();
+  ll2->ll_displayf();
   ll2->ll_clear();
   std::cout<<"After clearing:\n";
-  ll2->ll_display();
+  ll2->ll_displayf();
 
   return 0;
 }
