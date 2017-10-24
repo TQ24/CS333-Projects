@@ -8,6 +8,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "linkedlist.h"
 
 // function that prints an integer
@@ -15,6 +16,11 @@ void printInt(void *i) {
 	int *a = (int *)i;
 
 	printf("value: %d\n", *a);
+}
+
+// function that prints a String
+void printStr(void *s){
+	printf("string: %s\n", s);
 }
 
 // function that squares an integer
@@ -38,6 +44,8 @@ int main(int argc, char *argv[]) {
 	int *a;
 	int *target;
 	int i;
+
+	printf("\n--- Integer Linked List ---\n");
 
 	// create a list
 	l = ll_create();
@@ -121,13 +129,35 @@ int main(int argc, char *argv[]) {
 
 	ll_delete(l, 0);
 
-	printf("\nAfter deleting the fist node\n");
+	printf("\nAfter deleting the first node\n");
 	ll_map(l, printInt);
 
 	ll_delete(l, 0);
 
-	printf("\nAfter deleting the fist node\n");
+	printf("\nAfter deleting the first node\n");
 	ll_map(l, printInt);
+
+	ll_clear(l, free);
+
+	printf("\n--- String Linked List ---\n");
+
+	char *s = malloc(5*sizeof(char));
+	char *s2 = malloc(5*sizeof(char));
+	char *s3 = malloc(5*sizeof(char));
+	strcpy(s,"kobe");
+
+	ll_push(l,s);
+	strcpy(s2,"rose");
+	ll_push(l,s2);
+	strcpy(s3,"paul");
+	ll_push(l,s3);
+	printf("After pushing:\n");
+	ll_map(l, printStr);
+
+	ll_pop(l);
+	ll_pop(l);
+	printf("\nAfter popping twice:\n");
+	ll_map(l, printStr);
 
 	return(0);
 }

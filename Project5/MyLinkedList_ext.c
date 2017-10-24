@@ -149,7 +149,7 @@ void ll_map(LinkedList *l, void (*mapfunc)(void *)){
   }
 }
 
-// removes the node at any position in the list
+// removes the node at any position in the list EXTENSION1
 void ll_delete(LinkedList *l, int index){
   if (l->head == NULL){
     return;
@@ -176,6 +176,7 @@ void ll_delete(LinkedList *l, int index){
         }
         last->next = c->next;
       }
+      l->size--;
     }
   }
 }
