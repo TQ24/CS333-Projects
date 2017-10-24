@@ -68,6 +68,7 @@ class LinkedList {
   int main(){
     LinkedList ll = new LinkedList();
     int *a = 24;
+    ll.ll_push(a);
     std::cout<< ll.head->data <<;
   }
 
