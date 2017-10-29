@@ -1,0 +1,229 @@
+<!-- Project 5
+   - Part II: Semantics of Selected Languages
+   - JavaScript
+   -
+   - Task1
+   - Tracy Quan
+ -->
+
+<html>
+  <head>
+    <title>Project5 -- JavaScript</title>
+    <img src="images/javascript.png" alt="javascript" style="width:240px;height:120px">
+    <h1>Project5 -- JavaScript</h1>
+    <h2>Polymorphism in JavaScript </h2>
+    <h3>Linked List</h3>
+    <img src="images/LinkedList.png" alt="LinkedList" style="width:300px">
+    <h4></h4>
+    <h4>Output: </h4>
+
+    <!-- Here is my JavaScript Code -->
+    <script>
+      // constructor of Node
+      function Node(data){
+        this.data = data;
+        this.next = null;
+      }
+      // constructor of LinkedList
+      function LinkedList(){
+        this._size = 0;
+        this.head = null;
+      }
+
+      // Adds a node to the front of the list, storing the given data in the node.
+      LinkedList.prototype.push = function(data) {
+        // if the list is empty.
+        if (this._size == 0){
+          var newnode = new Node(data);
+          this.head = newnode;
+          newnode.next = null;
+          this._size++;
+        }
+        else{
+          var newnode = new Node(data);
+          var currenthead = this.head;
+          this.head = newnode;
+          newnode.next = currenthead;
+          this._size++;
+        }
+      }
+
+      // removes the node at the front of the list and returns the associate data
+      LinkedList.prototype.pop = function(){
+        if (this.head == null){
+          document.write("This Linked list is empty! <br>");
+          retrun;
+        }
+        else if (this._size == 1){
+          var node = this.head;
+          this.head = null;
+          this._size --;
+          return node.data;
+        }
+        else {
+          var node = this.head;
+          this.head = node.next;
+          this._size--;
+          return node.data;
+        }
+      }
+
+      // adds a node to the end of the list, storing the given data in the node.
+      LinkedList.prototype.append = function(data){
+        if (this._size == 0){
+          var newnode = new Node(data);
+          this.head = newnode;
+          this._size++;
+        }
+        else {
+          var newnode = new Node(data);
+          var currentnode = this.head;
+          while (currentnode.next != null){
+            currentnode = currentnode.next;
+          }
+          currentnode.next = newnode;
+          newnode.next = null;
+          this._size++;
+        }
+      }
+
+      // removes the first node in the list whose data matches target given.
+      LinkedList.prototype.remove = function(target){
+        if (this._size == 0){
+          document.write("This Linked List is empty! <br>");
+          return;
+        }
+        else if (this._size == 1){
+          if (this.head.data == target){
+            this.head = null;
+            this._size--;
+            return this.head.data;
+          }
+          else{
+            document.write("Target not found! :c <br>");
+            return null;
+          }
+        }
+        else{
+          var currentnode = this.head;
+          if (currentnode.data == target){
+            this._size--;
+            return currentnode.data;
+          }
+          var last = currentnode;
+          currentnode = currentnode.next;
+          while (currentnode != null){
+            if (currentnode.data == target){
+              last.next = currentnode.next;
+              this._size--;
+              return currentnode.data;
+            }
+            currentnode = currentnode.next;
+            last = last.next;
+          }
+          document.write("Target not found! <br>");
+          return;
+        }
+      }
+
+      // prints out the size of the list
+      LinkedList.prototype.print_size = function(){
+        document.write("Size of the LinkedList: " + this._size + "<br>");
+      }
+
+      // removes all of the nodes from the list.
+      LinkedList.prototype.clear = function(){
+        if (this._size == 0){
+          return;
+        }
+        else{
+          this.head = null;
+          this._size = 0;
+        }
+      }
+
+      // traverses the list and applies the given function to the data at each node.
+      LinkedList.prototype.ll_map = function(func){
+        var currentnode = this.head;
+        if (this._size==0){
+          return;
+        }
+        else{
+          while (currentnode!=null){
+            currentnode.data = func(currentnode.data);
+            currentnode = currentnode.next;
+          }
+        }
+      }
+
+      // prints out all elements in the list.
+      LinkedList.prototype.display = function(){
+        var currentnode = this.head;
+        if (currentnode == null){
+          document.write("This is an empty list! <br>");
+        }
+        else{
+          document.write("List: ");
+          while (currentnode != null){
+            document.write(currentnode.data + " ");
+            currentnode = currentnode.next;
+          }
+          document.write("<br>");
+        }
+      }
+
+
+      // return the square of the give data
+      var square = function (data){
+        var result = data*data;
+        return result;
+      }
+
+      // test function
+      function test(){
+        document.write("--- Integer Linked List ---<br>");
+        var ll = new LinkedList();
+        ll.push(2);
+        ll.push(4);
+        ll.push(8);
+        ll.push(16);
+        document.write("After pushing: <br>");
+        ll.display();
+        ll.pop();
+        document.write("After popping: <br>");
+        ll.display();
+        ll.append(24);
+        ll.append(0);
+        document.write("After appending: <br>");
+        ll.display();
+        ll.remove(24);
+        document.write("After removing: <br>");
+        ll.display();
+        ll.ll_map(square);
+        document.write("After squaring: <br>");
+        ll.display();
+        ll.clear();
+        document.write("After clearing: <br>");
+        ll.display();
+
+        document.write("<br>--- String Linked List ---<br>");
+        ll.push("cs");
+        ll.push("project");
+        ll.push("econ");
+        ll.push("problem set");
+        document.write("After pushing:<br>");
+        ll.display();
+        ll.pop();
+        ll.pop();
+        document.write("After popping:<br>");
+        ll.display();
+        ll.append("finished");
+        document.write("After appending:<br>");
+        ll.display();
+      }
+
+      test();
+
+    </script>
+  </head>
+</html>
