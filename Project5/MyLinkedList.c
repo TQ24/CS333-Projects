@@ -8,11 +8,12 @@
  */
 
 #include <stdio.h>
+#include <stdlib.h>
 #include "linkedlist.h"
 
 // Creates a new LinkedList struct, initializes it, and returns it.
 LinkedList *ll_create(){
-  LinkedList *llptr = malloc(sizeof(LinkedList));   // create a pointer to the linked LinkedList
+  LinkedList *llptr = (LinkedList *)malloc(sizeof(LinkedList));   // create a pointer to the linked LinkedList
   llptr->head = NULL;
   llptr->size = 0;
   return llptr;
@@ -117,7 +118,7 @@ int ll_size(LinkedList *l){
 void ll_clear(LinkedList *l, void (*freefunc)(void *)){
   Node *cur = l->head;
   if (cur == NULL){
-    printf("%c\n", "It's empty");
+    printf("%s\n", "It's empty");
     return;
   }
   while (cur != NULL ){
@@ -153,9 +154,9 @@ int main(){
   ll_push(ll, 20);
   printf("Current size: %d\n", ll_size(ll));
   ll_push(ll, 30);
-  printf("%d\n", ll->head->data);
-  printf("%d\n", ll->head->next->data);
-  printf("%d\n", ll->head->next->next->data);
+  printf("%p\n", ll->head->data);
+  printf("%p\n", ll->head->next->data);
+  printf("%p\n", ll->head->next->next->data);
   printf("Current size: %d\n", ll_size(ll));
   ll_pop(ll);
   printf("Current size: %d\n", ll_size(ll));
