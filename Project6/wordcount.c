@@ -101,11 +101,17 @@ void delete_invalid(char *s){
 
 /* the main program. */
 int main(int argc, char *argv[]){
+  if (argc<2){
+    printf("Please enter a valid filename");
+  }
   FILE *fp;
   word words[Max_words];
   char s[5000];
   int size = 0;
   fp = fopen(argv[1],"r");
+  if (fp==NULL){
+    printf("This file doesn't exist");
+  }
   while (fscanf(fp, "%s", s)!=EOF){
 
     if (valid_char(s[0])==1){         // if the first char of s is valid

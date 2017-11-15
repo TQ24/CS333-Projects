@@ -1,0 +1,69 @@
+<!-- Project 6
+   - Part II: Functions and File I/O in Selected Languages
+   - JavaScript
+   -
+   - Task1: File I/O in JavaScript
+   - 1-1: read user's input (interactively); read a file
+   - Tracy Quan
+ -->
+
+<html style="font-family:calibri">
+  <head>
+    <title>Project6 -- JavaScript</title>
+    <img src="images/javascript.png" alt="javascript" style="width:240px;height:120px">
+    <p></p>
+    <img src="images/fileio.gif" alt="fileio" style="width:480px">
+    <p></p>
+    <img src="images/fileo.gif" alt="fileo" style="width:480px">
+    <h1>Project6 -- JavaScript</h1>
+    <h2>File I/O in JavaScript </h2>
+    <h3>Task 1</h3>
+    <h4>Read input using prompt box.</h4>
+    <P>Click button to demonstrate the prompt box.</p>
+    <button onclick="myFunction()"> Try it </button>
+    <p id="demo"></p>
+
+    <!-- Here is my JavaScript Code -->
+    <!-- Get users' input -->
+    <script>
+      function myFunction(){
+        var person = prompt("Please enter your name!","Tracy");
+        if (person!=null){
+          document.getElementById("demo").innerHTML = "Hello, "+person+"! What's up!";
+        }
+      }
+    </script>
+
+    <!-- Read the content of the uploaded file -->
+    <h4>Read the content of the uploaded file </h4>
+    <input type='file' accept='text/plain' onchange='openFile(event)'><br>
+    <img id='output'>
+    <script>
+      var openFile = function(event){
+        var input=event.target;
+        var reader = new FileReader();
+        reader.onload=function(){
+          var text = reader.result;
+          alert(reader.result.substring(0,10000));
+        };
+        reader.readAsText(input.files[0]);
+      };
+    </script>
+
+    <!-- Read the content of the uploaded BINARY file -->
+    <h4>Read the content of the uploaded BINARY file (pdf)</h4>
+      <input type='file' accept='text/pdf' onchange='openFile(event)'><br>
+      <img id='output'>
+      <script>
+        var openFile = function(event){
+          var input=event.target;
+          var reader = new FileReader();
+          reader.onload=function(){
+            var text = reader.result;
+            alert(reader.result.substring(0,10000));
+          };
+          reader.readAsBinaryString(input.files[0]);
+        };
+      </script>
+  </head>
+</html>
