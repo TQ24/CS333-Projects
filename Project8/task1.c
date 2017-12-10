@@ -267,4 +267,6 @@ int main(int argc, char *argv[]){
   free(array);
   free(array_copy);
   pthread_exit(NULL);
+
+  return 0;
 }
