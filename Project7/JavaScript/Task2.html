@@ -1,0 +1,46 @@
+<!-- Project 7
+   - JavaScript
+   -
+   - Tracy Quan
+ -->
+
+<html style="font-family:calibri">
+  <head>
+    <title>Project7 -- JavaScript</title>
+    <h1>Project7 -- JavaScript</h1>
+    <h2>Memory Management </h2>
+    <h3>Task 2</h3>
+    <script>
+
+    function memallo(size){
+      var result = new Array(20);
+      var i = 0;
+      var sum = 0;
+      for (var j=0; j<20; j++){
+        var t0 = performance.now();
+        for (i=0; i<10000; i++){
+          var list = new Array(size);
+          list = null;
+        }
+        var t1 = performance.now();
+        sum = sum + (t1-t0);
+        result[j] = t1-t0;
+      }
+      document.write("SUM: <br>");
+      document.write(sum);
+      document.write("<br><br>Each time: ------<br>")
+      for (i=0; i<20; i++){
+        document.write(result[i]);
+        document.write("<br>")
+      }
+    }
+
+    document.write("----------------- Size 10000 --------------- <br>");
+    memallo(10000);
+    document.write("<br><br>----------------- Size 1000 --------------- <br>");
+    memallo(1000);
+    document.write("<br><br>----------------- Size 100 --------------- <br>");
+    memallo(100);
+    </script>
+  </head>
+</html>
